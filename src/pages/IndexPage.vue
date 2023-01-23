@@ -8,7 +8,12 @@
       @focus="onFocus"
       @blur="onBlur"
     >
-      <q-menu :model-value="popupOpen" no-parent-event fit no-focus>
+      <q-menu
+        :model-value="popupOpen"
+        no-parent-event
+        fit
+        no-focus
+      >
         <q-card>
           <q-list padding>
             <q-item
@@ -33,9 +38,11 @@
 
 <script>
 import { defineComponent } from 'vue'
+import sampleMixin from 'pages/sampleMixin'
 
 export default defineComponent({
   name: 'IndexPage',
+  mixins: [sampleMixin],
   data () {
     return {
       inputVal: '',
@@ -45,6 +52,7 @@ export default defineComponent({
   methods: {
     setVal (val) {
       this.inputVal = val
+      this.$emit('sample')
     },
     onFocus () {
       this.popupOpen = true
